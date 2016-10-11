@@ -4,7 +4,7 @@ services:
   valkyrja:
     image: valkyrja
     volumes:
-      - "./:/var/www/site"
+      - "./valkyrja:/var/www/site"
     tty: true
     extra_hosts:
       - "valkyrja.dev:10.16.238.10"

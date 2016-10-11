@@ -42,7 +42,7 @@ RUN a2enmod rewrite
 RUN rm -Rf /var/www/html && chown www-data:www-data /var/www
 
 # Copy this repo into place.
-ADD ./ /var/www/site
+ADD ./valkyrja /var/www/site
 
 # By default start up apache in the foreground, override with /bin/bash for interative.
 CMD /usr/sbin/apache2ctl -D FOREGROUND
