@@ -1,6 +1,6 @@
 #!/bin/bash
 
-./docker-stop.sh
+./stop.sh
 
 # Remove all images
 docker rm $(docker ps -a -q)
