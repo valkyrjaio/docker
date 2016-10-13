@@ -46,3 +46,6 @@ ADD ./valkyrja /var/www/site
 
 # By default start up apache in the foreground, override with /bin/bash for interative.
 CMD /usr/sbin/apache2ctl -D FOREGROUND
+
+# Install Opcache
+RUN docker-php-ext-install opcache
