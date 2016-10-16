@@ -33,19 +33,24 @@ ENV APACHE_PID_FILE /var/run/apache2.pid
 # Update the default apache2 config
 COPY docker/apache2.conf /etc/apache2/apache2.conf
 
+# Install Opcache
+RUN docker-php-ext-install opcache
+
 # Copy sites-enabled
 ADD docker/sites-enabled /etc/apache2/sites-enabled
 
 # Apache
 RUN a2enmod rewrite
 
-RUN rm -Rf /var/www/html && chown www-data:www-data /var/www
-
 # Copy this repo into place.
 ADD ./valkyrja /var/www/site
 
+# Add an sh file to sync
+COPY ./docker/sync.sh /var/www/sync.sh
+RUN chmod 755 /var/www/sync.sh
+
+RUN rm -Rf /var/www/html
+RUN chown -R www-data:www-data /var/www/site
+
 # By default start up apache in the foreground, override with /bin/bash for interative.
 CMD /usr/sbin/apache2ctl -D FOREGROUND
-
-# Install Opcache
-RUN docker-php-ext-install opcache
