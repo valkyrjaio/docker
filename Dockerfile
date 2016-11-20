@@ -22,7 +22,6 @@ RUN apt-get -y --reinstall install php7.0-opcache
 #RUN apt-get -y --reinstall install php7.0-mysql
 RUN apt-get -y --reinstall install php7.0-phpdbg
 RUN apt-get -y --reinstall install php7.0-mbstring
-#RUN apt-get -y --reinstall install php7.0-gd
 #RUN apt-get -y --reinstall install php7.0-imap
 #RUN apt-get -y --reinstall install php7.0-ldap
 #RUN apt-get -y --reinstall install php7.0-pgsql
@@ -31,9 +30,9 @@ RUN apt-get -y --reinstall install php7.0-mbstring
 #RUN apt-get -y --reinstall install php7.0-tidy
 RUN apt-get -y --reinstall install php7.0-dev
 #RUN apt-get -y --reinstall install php7.0-intl
-#RUN apt-get -y --reinstall install php7.0-gd
+RUN apt-get -y --reinstall install php7.0-gd
 RUN apt-get -y --reinstall install php7.0-curl
-#RUN apt-get -y --reinstall install php7.0-zip
+RUN apt-get -y --reinstall install php7.0-zip
 RUN apt-get -y --reinstall install php7.0-xml
 
 # Install redis
