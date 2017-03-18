@@ -4,6 +4,6 @@ services:
   valkyrja:
     image: valkyrja
     volumes:
-      - "./valkyrja:/var/www/sync"
+      - "./valkyrja:/var/www/site"
     ports:
       - "80:80"

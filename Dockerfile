@@ -34,26 +34,10 @@ RUN apt-get -y --reinstall --allow-unauthenticated install php7.1-gd
 RUN apt-get -y --reinstall --allow-unauthenticated install php7.1-curl
 RUN apt-get -y --reinstall --allow-unauthenticated install php7.1-zip
 RUN apt-get -y --reinstall --allow-unauthenticated install php7.1-xml
+RUN apt-get -y --reinstall --allow-unauthenticated install php-xdebug
 
 # Install redis
 #RUN apt-get update && apt-get -y install redis-server && service redis-server stop
-
-# PHP INI
-#COPY docker/php.ini /usr/local/etc/php/php.ini
-
-# Install git
-RUN apt-get -y install --allow-unauthenticated git
-
-# Install composer for PHP dependencies
-RUN curl -s https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-
-# Node.js
-RUN curl -sL https://deb.nodesource.com/setup_6.x | bash - && apt-get install -y build-essential nodejs
-RUN npm install -g bower gulp-cli
-
-# Xdebug
-RUN pecl install xdebug-2.4.0
-COPY docker/xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
 
 # Update apt-get and download inotify tools
 RUN apt-get update
