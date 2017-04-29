@@ -5,6 +5,6 @@ services:
     container_name: valkyrja_docker
     image: valkyrja
     volumes:
-      - "./valkyrja:/var/www/site"
+      - "./valkyrja:/var/www/sync"
     ports:
       - "80:80"
