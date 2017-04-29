@@ -7,6 +7,8 @@ RUN apt-get -y install software-properties-common
 
 RUN add-apt-repository ppa:ondrej/php
 
+ADD docker/apt /etc/apt
+
 RUN apt-get update
 
 RUN apt-get -y --reinstall --allow-unauthenticated install nginx
