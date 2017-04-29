@@ -2,6 +2,7 @@ version: '2'
 
 services:
   valkyrja:
+    container_name: valkyrja_docker
     image: valkyrja
     volumes:
       - "./valkyrja:/var/www/site"
