@@ -51,17 +51,23 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 # Update the default nginx config
 COPY docker/conf/site.conf /etc/nginx/sites-enabled/default
 
-# Copy this repo into place.
-ADD ./valkyrja /var/www/site
-
 # Add an sh file for sync
 COPY ./docker/sync.sh /var/www/sync.sh
 COPY ./docker/sync-site.sh /var/www/sync-site.sh
 RUN chmod 755 /var/www/sync.sh
 RUN chmod 755 /var/www/sync-site.sh
 
+RUN echo 'alias valkyrja="php /var/www/site/valkyrja"' >> ~/.bash_profile
+ADD ./docker/bash_completion/valkyrja /etc/bash_completion.d
+
+# Copy this repo into place.
+ADD ./valkyrja /var/www/site
+
 # 777 the storage directory for twig cache
 RUN chmod -R 777 /var/www/site/storage
+
+RUN chmod +x /var/www/site/valkyrja
+RUN sed -i 's/\r//' /etc/bash_completion.d/valkyrja
 
 #RUN ln -sf /dev/stdout /var/log/nginx/access.log
 #RUN ln -sf /dev/stderr /var/log/nginx/error.log
