@@ -1,6 +1,6 @@
 _valkyrja()
 {
-COMPREPLY=(`valkyrja console:commandsForBash $COMP_LINE`)
+COMPREPLY=(`valkyrja console:commandsForBash commandTyped=$COMP_LINE`)
 return 0
 }
 complete -F _valkyrja valkyrja
