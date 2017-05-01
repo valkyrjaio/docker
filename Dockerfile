@@ -57,6 +57,9 @@ COPY ./docker/sync-site.sh /var/www/sync-site.sh
 RUN chmod 755 /var/www/sync.sh
 RUN chmod 755 /var/www/sync-site.sh
 
+COPY ./docker/source_bash_autocomplete.sh /var/www/source_bash_autocomplete.sh
+RUN chmod 755 /var/www/source_bash_autocomplete.sh
+
 RUN echo 'alias valkyrja="php /var/www/site/valkyrja"' >> ~/.bash_profile
 ADD ./docker/bash_completion/valkyrja /etc/bash_completion.d
 
